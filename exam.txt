@@ -1,0 +1,76 @@
+ComboGuard’s Full Stack Entry Task
+
+
+For this task you’ll need to set up a local MySQL server, setup a table called Vasts with the following columns:
+
+id | vast_url | position | hide_ui
+
+id is auto increment, primary key
+vast_url is varchar(600)
+position is string, default value is `bottom_right`, 
+acceptable values: (top_left|top_middle|top_right|middle_left|middle_right|bottom_left|bottom_middle|bottom_right)
+hide_ui is bool / tinyint(1), default value is `false`
+
+After you’ve set up the `Vasts` table successfully create (using Node.js) the following routes:
+POST ‘/create_vast` - this API is to insert a new column into the table in our database, please perform input validation, it should receive the following JSON object:
+    {
+        “vastURL” : <string>, // required // url string
+        “position” : <string>, // optional 
+        “hideUI” : <bool> // optional
+}
+GET ‘/fetch_vast?id=INT` - this API will retrieve a VAST XML with the properties back from the backend in correlation to the video id(`Vasts.id`)
+
+Elaboration for `/create_vast` API
+    
+POST /create_vast HTTP/1.0 
+User-Agent: ... 
+Content-Type: application/x-www-form-urlencoded 
+Content-Length: length of req. 
+vastURL=https%3A%2F%2Fvideo.combotag.com%2F17.xml&position=middle_right&hideUI=false
+In the Vasts table expect to see:
+id | vast_url | position | hide_ui
+1 | https://video.combotag.com/17.xml | middle_right| false
+
+
+Elaboration for `/fetch_vast` API
+
+GET /fetch_vast?id=1 HTTP/1.0
+User-Agent: …
+...
+
+
+Should return the following XML:
+
+<VAST version="2.0">
+<Ad id="ComboGuard">
+<InLine>
+<AdSystem>2.0</AdSystem>
+<Impression/>
+<Creatives>
+<Creative>
+<Linear>
+<Duration>00:00:19</Duration>
+<MediaFiles>
+<MediaFile type="application/x-shockwave-flash" apiFramework="VPAID" height="168" width="298" delivery="progressive">
+<![CDATA[
+http://localhost/ComboWrapper.swf?vast=https%3A%2F%2Fvideo.combotag.com%2F17.xml&position=middle_right&hideUI=false&videoId=1
+]]>
+</MediaFile>
+<MediaFile type="application/javascript" apiFramework="VPAID" height="168" width="298" delivery="progressive">
+<![CDATA[
+http://localhost/ComboWrapper.js?vast=https%3A%2F%2Fvideo.combotag.com%2F17.xml&position=middle_right&hideUI=false&videoId=1
+]]>
+</MediaFile>
+</MediaFiles>
+</Linear>
+</Creative>
+</Creatives>
+</InLine>
+</Ad>
+</VAST>
+
+
+If the video id doesn’t exist in the DB, return an empty vast tag:
+<VAST version="2.0"></VAST>
+
+A bonus: create a front end to add/view the vasts in react.js with redux
