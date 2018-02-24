@@ -1,0 +1,60 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ComboGuard - VAST API",
+		"_postman_id": "7444ee5a-1d75-9fac-f4d9-4b25c37d3493",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/create_vast",
+			"request": {
+				"url": "localhost:3000/create_vast",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vast_url\": \"https://video.combotag.com/17.xml\",\n\t\"position\": \"top_left\",\n\t\"hide_ui\": false\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/fetch_vast?id=1",
+			"request": {
+				"url": {
+					"raw": "localhost:3000/fetch_vast?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fetch_vast"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -29,6 +29,9 @@ $ npm run start
 
 ## HTTP API
 
+> Note: Use the `ComboGuard - VAST API.postman_collection.json` file with [Postpan](https://www.getpostman.com/) for an esayer setup.
+> TODO: Implement Swager API generater to app. 
+
 ### fetch VAST
 
 Request:
