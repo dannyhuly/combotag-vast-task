@@ -16,17 +16,11 @@ export class VastControllerValidator {
     })
 
     validateCreateVastObject(obj: any): CreateVastDTO {
-
-        console.log(this.vastPositionOptions)
-
         const result = this.createVastSchema.validate<CreateVastDTO>(obj);
-
         if (result.error) {
             throw result.error
         }
-
         return result.value;
-
     }
 
 }

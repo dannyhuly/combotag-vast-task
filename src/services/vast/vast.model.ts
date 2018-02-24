@@ -9,8 +9,18 @@ export enum VastPosition {
     BOTTOM_RIGHT = 'bottom_right'
 }
 
-export class CreateVastDTO {
+class VastBaseDTO{
+    vast_url: string;
+    position: VastPosition;
+    hide_ui: boolean;
+}
+
+export class CreateVastDTO extends VastBaseDTO { 
     readonly vast_url: string;
     readonly position: VastPosition;
     readonly hide_ui: boolean;
+}
+
+export class VastDTO extends VastBaseDTO { 
+    readonly id: number;
 }

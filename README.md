@@ -1,11 +1,14 @@
 ## Description
 
 ### Technologies
-* [Nest](https://github.com/nestjs/nest)
-  
+* [NestJS](https://github.com/nestjs/nest) - NodeJS Server Side Framework
+* [TypeORM](https://github.com/typeorm/typeorm) - NodeJS ORM Framework
+
 ## Prerequisites
 * NodeJs v8.9.4 (NPM 5.6.0)
 * MySql Server
+** Configur database file at `./src/configuration/db.configuration.ts` (Allow `synchronize = true` on first run to init entities in DB).
+**
 
 ## Installation
 
